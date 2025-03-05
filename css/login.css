@@ -1,0 +1,153 @@
+
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@100..900&display=swap');
+
+/* GENERAL */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+/* VARIABLES */
+:root {
+    --font-primary: 'League Spartan', serif;
+}
+
+body {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    background-color: #bbecd6;
+    border-radius: 10px;
+    font-size: 20px;
+
+    width: 35vw;
+    height: 42vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 2px solid #cef6e4;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+
+    font-family: var(--font-primary);
+}
+
+main img {
+    width: 30%;
+    margin-bottom: -20px;
+
+    animation: logo 3s ease-in-out infinite;
+}
+
+@keyframes logo {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(0deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+#loggo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    margin-top: 3vh;
+}
+
+form div {
+    margin-bottom: 2vh;
+}
+
+form input {
+    width: 100%;
+    height: 3vh;
+    margin-top: 0.5vh;
+    border: 2px solid #1c573c;
+    border-radius: 5px;
+}
+
+button {
+    padding: 5px;
+    width: 30%;
+    border: 2px solid #1c573c;
+    border-radius: 5px;
+    background-color: #63dba5;
+    float: right;
+
+    transition: all 0.2s linear;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: #1c573c;
+    color: white;
+}
+
+#msg {
+    color: red;
+}
+
+p {
+    font-size: 14px;
+    margin-top: 20px;
+    opacity: 0.8;
+    margin-bottom: 50px;
+}
+
+a:hover {
+    color: #1c573c;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+    main {
+        height: 50vh;
+        width: 45vw;
+    }
+
+    main img {
+        width: 45%;
+    }
+
+    h1 {
+        font-size: 35px;
+    }
+
+    form {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    main {
+        height: 45vh;
+        width: 60vw;
+    }
+
+    main img {
+        width: 40%;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    form {
+        width: 70%;
+    }
+}
