@@ -4,7 +4,10 @@ FROM httpd:2.4
 
 # Instalo Node.js y json-server
 RUN apt-get update && \
-    apt-get install -y npm nodejs
+    apt-get install -y npm nodejs && \
+    apt-get install apache2 libapache2-mod-wsgi
+
+RUN a2enmod wsgi
 
 # Habilito mod_userdir para el espacio de usuarios y más necesarios
 RUN sed -i 's/#LoadModule rewrite_module/LoadModule rewrite_module/' /usr/local/apache2/conf/httpd.conf && \
