@@ -4,8 +4,8 @@ FROM httpd:2.4
 
 # Instalo Node.js y json-server
 RUN apt-get update && \
-    apt-get install -y npm nodejs && \
-    apt-get install apache2 libapache2-mod-wsgi
+    apt-get install -y npm nodejs
+    # apt-get install apache2 libapache2-mod-wsgi
 
 RUN a2enmod wsgi
 
@@ -33,11 +33,11 @@ COPY ./tf/500.html /var/www/neikap/errores
 # SITIOS VIRTUALES
 COPY ./index.html /var/www/host1/public_html
 COPY ./index.html /var/www/host2/public_html
-RUN sh -c echo "127.0.0.1 www.host1.com >> /etc/hosts"
-RUN sh -c echo "127.0.0.1 www.host2.com >> /etc/hosts"
-RUN a2ensite host1.conf
-RUN a2ensite host2.conf
-RUN a2dissite 000-default.conf
+# RUN sh -c echo "127.0.0.1 www.host1.com >> /etc/hosts"
+# RUN sh -c echo "127.0.0.1 www.host2.com >> /etc/hosts"
+# RUN a2ensite host1.conf
+# RUN a2ensite host2.conf
+# RUN a2dissite 000-default.conf
 
 # Copio los certificados SSL
 COPY ./tf/certificate.crt /usr/local/apache2/conf/
