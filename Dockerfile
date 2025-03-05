@@ -13,7 +13,7 @@ RUN sed -i 's/#LoadModule rewrite_module/LoadModule rewrite_module/' /usr/local/
     sed -i 's/#LoadModule include_module/LoadModule include_module/' /usr/local/apache2/conf/httpd.conf
 
 # PARA DIRECTORIO POR DEFECTO Y SITIOS VIRTUALES
-RUN mkdir -p /var/www/neikap /var/www/test /var/www/neikap/docs /var/www/neikap/css /var/www/neikap/js /var/www/neikap/db /var/www/neikap/errores
+RUN mkdir -p /var/www/neikap /var/www/host1/public_html /var/www/host2/public_html /var/www/neikap/docs /var/www/neikap/css /var/www/neikap/js /var/www/neikap/db /var/www/neikap/errores
 
 # Copio los archivos de la página web
 # CAMBIADO DIRECTORIO POR DEFECTO
@@ -28,7 +28,13 @@ COPY ./tf/404.html /var/www/neikap/errores
 COPY ./tf/500.html /var/www/neikap/errores
 
 # SITIOS VIRTUALES
-COPY ./index.html /var/www/test
+COPY ./index.html /var/www/host1/public_html
+COPY ./index.html /var/www/host2/public_html
+RUN sh -c echo "127.0.0.1 www.host1.com >> /etc/hosts"
+RUN sh -c echo "127.0.0.1 www.host2.com >> /etc/hosts"
+RUN a2ensite host1.conf
+RUN a2ensite host2.conf
+RUN a2dissite 000-default.conf
 
 # Copio los certificados SSL
 COPY ./tf/certificate.crt /usr/local/apache2/conf/
