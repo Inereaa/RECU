@@ -20,17 +20,15 @@ resource "aws_instance" "mi_instancia" {
 
     # Clono el repositorio
     sudo apt-get install git -y
-    sudo git clone https://github.com/Inereaa/ptSVneikap.git /var/www/html
+    sudo git clone https://github.com/Inereaa/RECU.git /var/www/html
 
     # Construyo la imagen de Docker
     cd /var/www/html
     sudo docker build -t apache-server .
-    # AQUÍ si fuese NGINX, solo cambio 'apache-server' por 'nginx-server'
 
     # Ejecuto el contenedor y le pongo un nombre
     # CAMBIADO PUERTO DE PETICIONES POR DEFECTO
-    sudo docker run -d -p 8080:8080 -p 443:443 --name neikap apache-server
-    # AQUÍ si fuese NGINX, solo cambio 'apache-server' por 'nginx-server'
+    sudo docker run -d -p 80:80 -p 443:443 --name neikap apache-server
 
   EOF
 
